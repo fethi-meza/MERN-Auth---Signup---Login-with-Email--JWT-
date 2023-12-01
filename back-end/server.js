@@ -6,7 +6,7 @@ const UserRout =require('./Router/userRout')
 const AuthRout =require('./Router/auth')
 
 require('dotenv').config()
-const port = 3000
+const port = 3001
 
 //connction DB
 connectDB();
