@@ -18,7 +18,7 @@ import {
   showPassword
 } from '@chakra-ui/react'
 import { useState } from 'react'
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
+// import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import { useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
@@ -43,7 +43,7 @@ const [error ,setError] = useState("");
 const handelSubmit =async (e)=>{
     e.preventDefault()
 try {
-    const url ="http://localhost:3001//api/usres"
+    const url ="http://localhost:3001/api/usres"
     const {data: res} = await axios.post(url ,data) ;
     Navigate("./login.js")
     console.log(res.message)
@@ -85,24 +85,20 @@ try {
               <Box>
                 <FormControl id="lastName">
                   <FormLabel>Last Name</FormLabel>
-                  <Input type="text" name='lastName' placeholder='lastName'  value={data.lastName}/>
+                  <Input type="text" name='lastName' placeholder='lastName'  value={data.lastName} onChange={handelChange}/>
                 </FormControl>
               </Box>
             </HStack>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
-              <Input type="email"  name='email' placeholder='Email address' value={data.email}/>
+              <Input type="email"  name='email' placeholder='Email address' value={data.email} onChange={handelChange}/>
             </FormControl>
             <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
-                <Input type={setdata ? 'text' : 'password'}  name='password' placeholder='password'  value={data.password}/>
+                <Input type={setdata ? 'text' : 'password'}  name='password' placeholder='password'  value={data.password} onChange={handelChange}/>
                 <InputRightElement h={'full'}>
-                  <Button
-                    variant={'ghost'}
-                    onClick={() => setdata((showPassword) => !showPassword)}>
-                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                  </Button>
+                  
 
                 </InputRightElement>
               </InputGroup>
@@ -123,7 +119,7 @@ try {
             </Stack>
             <Stack pt={6}>
               <Text align={'center'}>
-                Already a user? <Link color={'blue.400'}>Login</Link>
+                Already a user? <Link to ="./login.js" color={'blue.400'}>Login</Link>
               </Text>
             </Stack>
           </Stack>
